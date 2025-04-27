@@ -1,7 +1,6 @@
 # 02180BeliefRevision
 
-This project implements a belief revision system based on logical entailment and contraction principles. It uses the `sympy` library for symbolic logic manipulation and provides a framework for testing belief revision postulates.
-
+This project implements a belief revision system based on logical entailment and contraction principles. 
 ## File Structure
 
 - `belief_base.py`: Contains the implementation of the `Belief` and `BeliefBase` classes.
