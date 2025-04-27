@@ -13,7 +13,15 @@ This project implements a belief revision system based on logical entailment and
 This project requires Python and the `sympy` library. Install the dependencies using:
 
 ```bash
-pip install -r [requirements.txt](http://_vscodecontentref_/1)¨
+pip install -r requirements.txt
+```
 
+## How to Run
 
+To execute the belief revision system and test the postulates, run the `main.py` file:
 
+```bash
+python main.py
+```
+
+This will execute the predefined test cases and display the results in the terminal.
