@@ -1,5 +1,7 @@
 import re
 from itertools import combinations
+from typing import Iterator 
+
 
 from sympy import And, Or, S, Implies, sympify, to_cnf, Not
 
@@ -42,7 +44,7 @@ class BeliefBase:
     def __len__(self) -> int:
         return len(self.beliefs)
 
-    def __iter__(self) -> iter(list[Belief]):
+    def __iter__(self) -> Iterator[Belief]:
         return iter(sorted(self.beliefs, key=lambda b: b.priority))
 
     def __repr__(self) -> str:
