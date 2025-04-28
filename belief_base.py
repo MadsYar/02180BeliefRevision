@@ -169,7 +169,7 @@ class BeliefBase:
         self.beliefs.remove(belief)
 
     @staticmethod
-    def _get_clauses(expr : sympy.Basic) -> list:
+    def _get_clauses(expr: sympy.Basic) -> list:
         """
         A list of clauses generated from the logical expression. Each clause is a frozenset. An empty list is 
         returned if the expression is logically True, and a list with one empty frozenset is returned 
