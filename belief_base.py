@@ -136,7 +136,11 @@ class Belief:
 
     @staticmethod
     def to_sympy_format(formula: str) -> str:
-        # Trim, normalize, and replace logical symbols with Pythonic
+        """
+        Parse and replacing characters in string, so it can encapsulate as a sympy object.
+        :param formula: Raw proportional logic string.
+        :return: A proportional logical string compatible with sympy.
+        """
         formula = formula.strip()
         formula = formula.replace('→', '>>').replace('->', '>>').replace('implies', '>>')
         formula = formula.replace('¬', '~').replace('!', '~')
