@@ -61,25 +61,32 @@ def test_consistency_postulate():
     print("Resulting Belief Base:")
     print(bb, "\n")
 
-
 def test_extensionality_postulate():
-    print("Testing Extensionality Postulate")
-    # Create two identical belief bases.
+    print("\nTesting Extensionality Postulate")
+    # Create two identical belief bases
     bb1 = BeliefBase()
-    bb1.expand(Belief("p", 1))
-    bb1.expand(Belief("Implies(p,q)", 2))
+    bb1.add(Belief("p", 1))
+    bb1.add(Belief("Implies(p, q)", 2))
 
     bb2 = BeliefBase()
-    bb2.expand(Belief("p", 1))
-    bb2.expand(Belief("Implies(p,q)", 2))
+    bb2.add(Belief("p", 1))
+    bb2.add(Belief("Implies(p, q)", 2))
 
-    # Contract one base by "p"
+    # Contract bb1 by p
     bb1.contract(Belief("p", 1))
-    # Contract the other by "~~p" (which is logically equivalent to p)
-    bb2.contract(Belief("~~p", 1))
+    # Contract bb2 by ~~p (double negation of p)
+    bb2.contract(Belief("Not(Not(p))", 1))
 
-    print("Resulting Belief Base (after contracting by p):")
-    print(bb1, "\n")
+    print("Resulting Belief Base after contracting by p:")
+    for belief in bb1.beliefs:
+        print(belief)
+
+    print("\nResulting Belief Base after contracting by ~~p:")
+    for belief in bb2.beliefs:
+        print(belief)
+
+    same = set(str(b) for b in bb1.beliefs) == set(str(b) for b in bb2.beliefs)
+    print("\nAre the two belief bases the same?:", same)
 
 
 def main():
