@@ -1,6 +1,7 @@
 import re
 from itertools import combinations
 from typing import Iterator
+import sympy
 from sympy import And, Or, S, Implies, sympify, Not
 
 # Used to register Implies so that sympy can process formulas like "p → q"
@@ -168,7 +169,15 @@ class BeliefBase:
         self.beliefs.remove(belief)
 
     @staticmethod
-    def _get_clauses(expr):
+    def _get_clauses(expr : sympy.Basic) -> list:
+        """
+        A list of clauses generated from the logical expression. Each clause is a frozenset. An empty list is 
+        returned if the expression is logically True, and a list with one empty frozenset is returned 
+        if the expression is logically False.
+
+        :param expr: A sympy logical expression
+        :return: A list of clauses from the logic. 
+        """
         clauses = []
         if expr == True or expr == S.true:
             return []
